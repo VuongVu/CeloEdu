@@ -1,1 +1,1 @@
-## CELO-DEMY - Simple project inspired from Udemy
+## CELO-EDU - Simple project inspired from Udemy
