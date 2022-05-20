@@ -3,4 +3,3 @@
 /* eslint-disable */
 export type { CeloEduMarketplace } from "./CeloEduMarketplace";
 export type { Erc20 } from "./Erc20";
-export type { Marketplace } from "./Marketplace";
