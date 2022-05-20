@@ -1,7 +1,7 @@
 import type { AppNotifyState } from 'components/base/notify/types';
 
 export interface RootState {
-    readonly appNotify: AppNotifyState;
+    appNotify: AppNotifyState;
 }
 
 export type RequiredRootState = Required<RootState>;

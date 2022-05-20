@@ -28,7 +28,7 @@ export default function useContract<T>(abi: any, address: string, options?: Cont
         try {
             return new contractKit.web3.eth.Contract(abi, address, options) as unknown as T; // workaround for type inference
         } catch (error) {
-            openNotify({ message: 'Failed to get contract', type: 'error' });
+            openNotify({ message: `Failed to get contract ${address}`, type: 'error' });
             return null;
         }
     }, [abi, address, contractKit, openNotify, options]);
