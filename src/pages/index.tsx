@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useContractKit } from '@celo-tools/use-contractkit';
 
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
+import Grid from '@mui/material/Grid';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 import Layout from 'components/ui/layout';
@@ -118,11 +118,13 @@ const Courses: NextPageProps = () => {
                         sx={{ mt: 2, ml: 2 }}>
                         Add course
                     </LoadingButton>
-                    <Stack direction="row" spacing={4} mt={2}>
+                    <Grid container spacing={4} mt={2}>
                         {courses.map(course => (
-                            <CourseItem key={course.index} course={course} onGetAllCourses={handleGetAllCourses} />
+                            <Grid key={course.index} item xs={3} md={4}>
+                                <CourseItem course={course} onGetAllCourses={handleGetAllCourses} />
+                            </Grid>
                         ))}
-                    </Stack>
+                    </Grid>
 
                     <AddCourse
                         open={isOpenAddCourse}
