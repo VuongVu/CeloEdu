@@ -60,7 +60,7 @@ function Navbar(): JSX.Element {
 
     return (
         <Box>
-            <AppBar position="fixed" color="transparent">
+            <AppBar position="fixed" color="inherit">
                 <Container maxWidth="lg">
                     <Toolbar>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
