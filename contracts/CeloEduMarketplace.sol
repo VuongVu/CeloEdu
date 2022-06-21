@@ -13,6 +13,7 @@ contract CeloEduMarketplace {
         address payable owner;
         string title;
         string description;
+        string content;
         string author;
         string image;
         uint price;
@@ -33,6 +34,7 @@ contract CeloEduMarketplace {
         string memory _description,
         string memory _author,
         string memory _image,
+        string memory _content,
         uint _price
     ) public {
         uint256 courseIndex = totalCourses.current();
@@ -56,6 +58,7 @@ contract CeloEduMarketplace {
         string memory,
         string memory,
         string memory,
+        string memory,
         uint,
         uint
     ) {
@@ -68,6 +71,7 @@ contract CeloEduMarketplace {
             c.author, 
             c.image, 
             c.price, 
+            c.content,
             c.sold
         );
     }
@@ -90,6 +94,24 @@ contract CeloEduMarketplace {
 
         c.sold++;
         learners[_index].push(Learner(msg.sender, false));
+    }
+
+    //Function using which the users can support their favorite creators financially
+    function supportCreator(uint _index, uint _amount) public payable{
+        IERC20 cUSD = IERC20(cUSDTokenAddress);
+        Course storage c = courses[_index];
+
+        require(cUSD.balanceOf(msg.sender) > _amount, "Not enough cUSD");
+
+        require(
+            cUSD.transferFrom(
+                msg.sender, 
+                c.owner, 
+                _amount
+            ), 
+            "Failed to transfer funds"
+        );
+
     }
 
     function completeCourse(uint _index) public payable {
